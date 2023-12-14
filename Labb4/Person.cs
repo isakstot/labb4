@@ -12,18 +12,25 @@ namespace Labb4
         public Hair TheHair { get; private set; }
         public DateTime Birthday { get; private set; }
         public string EyeColor { get; private set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        public Person(Gender gender, Hair hair, DateTime birthday, string eyeColor)
+        public Person(string firstName, string lastName, Gender gender, Hair hair, DateTime birthday, string eyeColor)
         {
             TheGender = gender;
             TheHair = hair;
             Birthday = birthday;
             EyeColor = eyeColor;
+            FirstName = firstName;
+            LastName = lastName;
         }
+
 
         public override string ToString()
         {
             return
+                $"First name: {FirstName}\n" +
+                $"Last name: {LastName}\n" +
                 $"Gender: {TheGender}\n" +
                 $"Hair color: {TheHair.Color}\n" +
                 $"Hair lenght: {TheHair.LenghtCM} (cm)\n" +
