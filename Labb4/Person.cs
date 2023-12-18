@@ -25,17 +25,16 @@ namespace Labb4
             LastName = lastName;
         }
 
-
         public override string ToString()
         {
             return
-                $"First name: {FirstName}\n" +
-                $"Last name: {LastName}\n" +
-                $"Gender: {TheGender}\n" +
-                $"Hair color: {TheHair.Color}\n" +
-                $"Hair lenght: {TheHair.LenghtCM} (cm)\n" +
-                $"Date of birth: {Birthday:yyyy:MM:dd} (yyyy:MM:dd)\n" +
-                $"Eye color: {EyeColor}";
+                $"  First name: {FirstName}\n" +
+                $"  Last name: {LastName}\n" +
+                $"  Gender: {TheGender}\n" +
+                $"  Hair color: {TheHair.Color}\n" +
+                $"  Hair lenght: {TheHair.LenghtCM} (cm)\n" +
+                $"  Date of birth: {Birthday:yyyy-MM-dd} (yyyy-MM-dd)\n" +
+                $"  Eye color: {EyeColor}";
         }
     }
 }
