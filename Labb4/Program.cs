@@ -28,7 +28,7 @@ namespace Labb4
                     //print all people
                     case "2":
                         Console.WriteLine("\nList of people stored:");
-                        PrintAllPeople(people);
+                        ListPersons(people);
                         break;
                     default:
                         Console.WriteLine("Invalid input, try again");
@@ -149,7 +149,7 @@ namespace Labb4
             return;
         }
 
-        static void PrintAllPeople(List<Person> peopleList)
+        static void ListPersons(List<Person> peopleList)
         {
             foreach (Person person in peopleList)
             {
