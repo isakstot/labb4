@@ -10,9 +10,9 @@ namespace Labb4
             List<Person> people = new List<Person>();
             while (!exit)
             {
-                Console.WriteLine("Press 1 to add new person\n" +
-                                  "Press 2 to list the added people\n"+
-                                  "Press 0 to exit the program");
+                Console.WriteLine("1. Add new person\n" +
+                                  "2. List all added people\n"+
+                                  "0. Exit the program");
                 string menuInput = Console.ReadLine();
                 
                 switch (menuInput)
@@ -41,77 +41,82 @@ namespace Labb4
 
         static string GetValidStringInput()
         {
-            string input = Console.ReadLine();
-            if (string.IsNullOrEmpty(input))
+            do
             {
-                Console.WriteLine("Invalid input, please try again");
-                return GetValidStringInput();
-            }
-            else {
-                return input;
-            }
+                string input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.WriteLine("Invalid input, value can not be empty");
+                }
+                else
+                {
+                    return input;
+                }
+            } while (true);
         }
 
         static int GetValidIntInput()
         {
-            string input = Console.ReadLine();
-            if (string.IsNullOrEmpty(input))
+            //remake to use do while loop
+            do
             {
-                Console.WriteLine("Invalid input, value can not be empty");
-                return GetValidIntInput();
-            }
-            if (int.TryParse(input, out int result))
-            {
-                return int.Parse(input);
-            }
-            else
-            {
-                Console.WriteLine("Invalid input, please enter an integer");
-                return GetValidIntInput();
-            }
+                string input = Console.ReadLine();
+                if (string.IsNullOrEmpty(input))
+                {
+                    Console.WriteLine("Invalid input, value can not be empty");
+                }
+                else if (int.TryParse(input, out int result))
+                {
+                    return int.Parse(input);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input, please enter an integer");
+                }
+            } while (true);
         }
 
         static DateTime GetValidDateTimeInput(string errorMessage)
         {
-            string input = Console.ReadLine();
-            if (string.IsNullOrEmpty(input))
+            //remake to use do while loop
+            do
             {
-                Console.WriteLine("Invalid input. Date can't be empty");
-                return GetValidDateTimeInput(errorMessage);
-            }
-            //check if input is a valid date in yyyy-MM-dd format, use the standard culture
-            if (DateTime.TryParseExact(input, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime result))
-            {
-                return DateTime.Parse(input);
-            }
-            //check if input is a valid date in yyyyMMdd format, use the standard culture
-            else if (DateTime.TryParseExact(input, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime result2))
-            {
-                //add dashes to the date, so it can be parsed to a DateTime object
-                input = input.Insert(4, "-");
-                input = input.Insert(7, "-");
-                return DateTime.Parse(input);
-            }
-            else
-            {
-                //if input is not a valid date in either format, ask for a new input
-                Console.WriteLine("Invalid input. " + errorMessage);
-                return GetValidDateTimeInput(errorMessage);
-            }
+                string input = Console.ReadLine();
+                if (DateTime.TryParseExact(input, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime result))
+                {
+                    return DateTime.Parse(input);
+                }
+                //check if input is a valid date in yyyyMMdd format, use the standard culture
+                else if (DateTime.TryParseExact(input, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out DateTime result2))
+                {
+                    //add dashes to the date, so it can be parsed to a DateTime object
+                    input = input.Insert(4, "-");
+                    input = input.Insert(7, "-");
+                    return DateTime.Parse(input);
+                }
+                else
+                {
+                    //if input is not a valid date in either format, ask for a new input
+                    Console.WriteLine("Invalid input. " + errorMessage);
+                }
+            } while (true);
         }
 
         static Gender GetValidEnumInput(string errorMessage)
         {
-            string input = Console.ReadLine();
-            if (Enum.TryParse(input, true, out  Gender result))
+            //remake to use do while loop
+            do
             {
-                return result;
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. " + errorMessage);
-                return GetValidEnumInput(errorMessage);
-            }
+                string input = Console.ReadLine();
+                if (Enum.TryParse(input, true, out Gender result))
+                {
+                    return result;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. " + errorMessage);
+                }
+            } while (true);
         }
 
         static void AddPerson(List<Person> peopleList)
