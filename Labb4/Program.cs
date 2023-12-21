@@ -6,15 +6,15 @@ namespace Labb4
     {
         static void Main(string[] args)
         {
-            bool exit = false;
             List<Person> people = new List<Person>();
+            bool exit = false;
             while (!exit)
             {
                 Console.WriteLine("1. Add new person\n" +
                                   "2. List all added people\n"+
                                   "0. Exit the program");
+
                 string menuInput = Console.ReadLine();
-                
                 switch (menuInput)
                 {
                     //exit
@@ -30,7 +30,6 @@ namespace Labb4
                         Console.WriteLine("\nList of people stored:");
                         PrintAllPeople(people);
                         break;
-
                     default:
                         Console.WriteLine("Invalid input, try again");
                         break;
@@ -77,8 +76,7 @@ namespace Labb4
         }
 
         static DateTime GetValidDateTimeInput(string errorMessage)
-        {
-            //remake to use do while loop
+        { 
             do
             {
                 string input = Console.ReadLine();
@@ -104,7 +102,6 @@ namespace Labb4
 
         static Gender GetValidEnumInput(string errorMessage)
         {
-            //remake to use do while loop
             do
             {
                 string input = Console.ReadLine();
@@ -124,7 +121,7 @@ namespace Labb4
             Console.WriteLine("Enter the first name of the person:");
             string firstName = GetValidStringInput();
 
-            Console.WriteLine("Enter the last of the person");
+            Console.WriteLine("Enter the last name of the person");
             string lastName = GetValidStringInput();
             
             Console.WriteLine("Enter the gender of the person - Male, Female, Nonbinary or Other");
